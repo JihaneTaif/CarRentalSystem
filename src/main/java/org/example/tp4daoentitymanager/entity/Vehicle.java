@@ -3,6 +3,7 @@ package org.example.tp4daoentitymanager.entity;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 
 @Entity
@@ -18,6 +19,16 @@ public class Vehicle {
         private Float dailyRentalRate;
         private Boolean availability;
         private LocalDate lastServiceDate;
+
+    // ONE vehicle → MANY bookings
+    //@OneToMany(mappedBy="vehicle")
+    //means Vehicle is NOT owner
+    //When a vehicle is deleted → its bookings are deleted(EXAME REQ)
+    @OneToMany(
+            mappedBy = "vehicle",
+            cascade = CascadeType.REMOVE
+    )
+    private List<Booking> bookings;
 
 
     public Vehicle(Long id, String brand, String model, Float dailyRentalRate, Boolean availability, LocalDate lastServiceDate) {

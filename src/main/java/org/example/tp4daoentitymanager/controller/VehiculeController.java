@@ -1,21 +1,25 @@
 package org.example.tp4daoentitymanager.controller;
 
 
+import org.example.tp4daoentitymanager.entity.Booking;
 import org.example.tp4daoentitymanager.entity.Vehicle;
+import org.example.tp4daoentitymanager.service.BookingService;
 import org.example.tp4daoentitymanager.service.VehiculeService;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
-@RequestMapping("/api/vehicules")
+@RestController
+@RequestMapping("/api/vehicles")
 public class VehiculeController {
 
-    private VehiculeService vehiculeService;
+    private final  VehiculeService vehiculeService;
+    private final  BookingService bookingService;
 
-    public VehiculeController(VehiculeService vehiculeService) {
+    public VehiculeController(VehiculeService vehiculeService,BookingService bookingService) {
+
         this.vehiculeService = vehiculeService;
+        this.bookingService= bookingService;
     }
 
 
@@ -52,6 +56,15 @@ List<Vehicule> findAllVehicules();
     @GetMapping("/available")
     public  List<Vehicle> findAvailableVehicules(){
         return vehiculeService.findAvailableVehicules();
+    }
+
+
+
+
+    // EXAM ENDPOINT
+    @GetMapping("/{id}/bookings")
+    public List<Booking> getBookings(@PathVariable Long id) {
+        return bookingService.getBookingsByVehicle(id);
     }
 
 

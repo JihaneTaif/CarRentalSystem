@@ -55,5 +55,19 @@ public class VehiculeDAOImpl implements VehicleDAO{
                 .getResultList();
     }
 
+    @Override
+    // EXAM QUESTION
+    //JPQL uses Entity names, not tables
+    //ORDER BY v.dailyRate DESC → highest price first
+    //setMaxResults(1) → only one result
+    public Vehicle findMostExpensiveVehicle() {
+        return entityManager.createQuery(
+                        "SELECT v FROM Vehicle v ORDER BY v.dailyRentalRate DESC",
+                        Vehicle.class
+                )
+                .setMaxResults(1)
+                .getSingleResult();
+    }
+
 
 }
