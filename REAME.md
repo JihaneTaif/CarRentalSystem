@@ -1,8 +1,8 @@
-📘 Secure Rental & Booking System
+## 📘 Secure Rental & Booking System
 
  DAO with EntityManager & Spring Security
 
-📌 Project Overview
+## 📌 Project Overview
 
 This project is a Spring Boot REST API developed for managing a Car Rental & Booking System.
 It allows:
@@ -25,7 +25,7 @@ Spring Security with Basic Authentication
 
 RESTful API design
 
-🛠 Technologies Used
+## 🛠 Technologies Used
 
 Java 17
 
@@ -41,11 +41,11 @@ H2 In-Memory Database
 
 Maven
 
-📂 Project Architecture
+## 📂 Project Architecture
 controller  →  service  →  dao (EntityManager)  →  database
 
 
-Packages:
+## Packages:
 
 entity – JPA entities
 
@@ -58,7 +58,7 @@ controller – REST API endpoints
 security – Spring Security configuration
 
 
-🧩 Mapping & Persistence
+## 🧩 Mapping & Persistence
 1️⃣ Booking Entity & Foreign Key Naming
 Booking Entity Code
 @Entity
@@ -117,7 +117,7 @@ ORDER BY v.dailyRate DESC → highest price first
 
 setMaxResults(1) → returns only the most expensive vehicle
 
-🔐 Task 2: The Security Layer
+## 🔐  The Security Layer
 Security Configuration Requirements
 
 ✔ Permit all access to GET /api/vehicles
@@ -168,7 +168,7 @@ hasRole("ADMIN") → restricts delete operations
 
 In-memory users used for simplicity (exam requirement)
 
-🌐 Task 3: API Design
+## 🌐  API Design
 1️⃣ Specialized Endpoint
 
 GET /api/vehicles/{id}/bookings
@@ -206,7 +206,7 @@ Retrieves all bookings linked to a specific vehicle
 
 Uses JPQL navigation: b.vehicle.id
 
-⭐ Bonus: Prevent Infinite JSON Loop
+## ⭐  Prevent Infinite JSON Loop
 
 Two valid solutions:
 
@@ -234,7 +234,7 @@ Username: sa
 
 Password: (empty)
 
-🎯 Conclusion
+## 🎯 Conclusion
 
 This project fulfills :
 
